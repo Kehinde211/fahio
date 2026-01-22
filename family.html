@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery Detail | FAHIO</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .image-preview {
+            position: relative;
+            overflow: hidden;
+        }
+        .image-preview:hover .delete-btn {
+            opacity: 1;
+        }
+        .delete-btn {
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+        }
+        .lightbox.active {
+            display: flex;
+        }
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <nav class="container mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <h1 class="text-2xl font-bold text-[#143887]">FAHIO</h1>
+                <div class="hidden md:flex space-x-6">
+                    <a href="index.html" class="text-gray-600 cursor-pointer font-medium hover:text-[#143887]">Home</a>
+                    <a href="about.html" class="text-gray-600 cursor-pointer hover:text-[#143887]">About</a>
+                    <a href="mission-vision.html" class="text-gray-600 cursor-pointer hover:text-[#143887]">Mission & Vision</a>
+                    <a href="gallery.html" class="text-[#143887] font-medium cursor-pointer">Gallery</a>
+                    <a href="contact.html" class="text-gray-600 cursor-pointer hover:text-[#143887]">Contact</a>
+                </div>
+                <button id="mobile-menu-btn" class="md:hidden text-gray-600 focus:outline-none">
+                    <svg id="menu-open-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                    <svg id="menu-close-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4 space-y-2">
+                <a href="index.html" class="block py-2 text-gray-600 hover:text-[#143887] hover:bg-blue-50 px-2 rounded">Home</a>
+                <a href="about.html" class="block py-2 text-gray-600 hover:text-[#143887] hover:bg-blue-50 px-2 rounded">About</a>
+                <a href="mission-vision.html" class="block py-2 text-gray-600 hover:text-[#143887] hover:bg-blue-50 px-2 rounded">Mission & Vision</a>
+                <a href="gallery.html" class="block py-2 text-[#143887] font-medium hover:bg-blue-50 px-2 rounded">Gallery</a>
+                <a href="contact.html" class="block py-2 text-gray-600 hover:text-[#143887] hover:bg-blue-50 px-2 rounded">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Breadcrumb -->
+    <section class="bg-white py-4 border-b">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center space-x-2 text-sm">
+                <a href="index.html" class="text-gray-600 hover:text-[#143887]">Home</a>
+                <span class="text-gray-400">/</span>
+                <a href="gallery.html" class="text-gray-600 hover:text-[#143887]">Gallery</a>
+                <span class="text-gray-400">/</span>
+                <span id="breadcrumb-title" class="text-[#143887] font-medium">Gallery Detail</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Detail Section -->
+    <section class="container mx-auto px-4 py-12">
+        <div class="max-w-6xl mx-auto">
+            <!-- Header with Add Button -->
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
+                <div>
+                    <h2 id="gallery-title" class="text-3xl md:text-4xl font-bold text-gray-800 mb-2">Gallery Title</h2>
+                    <p id="gallery-description" class="text-gray-600">Gallery description goes here</p>
+                </div>
+                <button id="add-image-btn" class="bg-[#143887] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#0f2a5e] transition-colors flex items-center gap-2">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+                    </svg>
+                    Add Images
+                </button>
+            </div>
+
+            <!-- Hidden File Input -->
+            <input type="file" id="file-input" accept="image/*" multiple class="hidden">
+
+            <!-- Image Gallery Grid -->
+            <div id="image-gallery" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                <!-- Sample images will be loaded here dynamically -->
+            </div>
+
+            <!-- Empty State -->
+            <div id="empty-state" class="text-center py-20 hidden">
+                <svg class="w-24 h-24 mx-auto text-gray-300 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                </svg>
+                <h3 class="text-xl font-semibold text-gray-700 mb-2">No images yet</h3>
+                <p class="text-gray-500 mb-6">Click "Add Images" to upload photos to this gallery</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox for viewing images -->
+    <div id="lightbox" class="lightbox">
+        <button id="close-lightbox" class="absolute top-4 right-4 text-white text-4xl hover:text-gray-300">
+            &times;
+        </button>
+        <button id="prev-image" class="absolute left-4 text-white text-4xl hover:text-gray-300">
+            &#8249;
+        </button>
+        <img id="lightbox-img" src="" alt="Gallery Image">
+        <button id="next-image" class="absolute right-4 text-white text-4xl hover:text-gray-300">
+            &#8250;
+        </button>
+    </div>
+
+    <!-- Back to Gallery Button -->
+    <section class="container mx-auto px-4 pb-16">
+        <div class="max-w-6xl mx-auto text-center">
+            <a href="gallery.html" class="inline-flex items-center gap-2 text-[#143887] font-semibold hover:text-[#0f2a5e] transition-colors">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                </svg>
+                Back to Gallery
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">FAHIO</h3>
+                    <p class="text-gray-400">Family Health Initiative Ogun - Empowering families through quality healthcare.</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="about.html" class="text-gray-400 cursor-pointer hover:text-white">About Us</a></li>
+                        <li><a href="mission.html" class="text-gray-400 cursor-pointer hover:text-white">Mission</a></li>
+                        <li><a href="gallery.html" class="text-gray-400 cursor-pointer hover:text-white">Gallery</a></li>
+                        <li><a href="contact.html" class="text-gray-400 cursor-pointer hover:text-white">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Contact Info</h4>
+                    <p class="text-gray-400">Email: info@fahio.org</p>
+                    <p class="text-gray-400">Phone: +234 XXX XXX XXXX</p>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2026 FAHIO. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Gallery data structure
+        const galleries = {
+            'mobile-clinic-1': {
+                title: 'Mobile Clinic Outreach',
+                description: 'Providing healthcare in rural communities',
+                images: []
+            },
+            'health-education-1': {
+                title: 'Health Education Workshop',
+                description: 'Teaching families about preventive care',
+                images: []
+            },
+            'maternal-health-1': {
+                title: 'Maternal Health Care',
+                description: 'Supporting expecting mothers',
+                images: []
+            },
+            'health-fair-1': {
+                title: 'Community Health Fair',
+                description: 'Bringing health services to the community',
+                images: []
+            },
+            'immunization-1': {
+                title: 'Child Immunization Drive',
+                description: 'Protecting children through vaccination',
+                images: []
+            },
+            'screening-1': {
+                title: 'Health Screening Program',
+                description: 'Free health checks for families',
+                images: []
+            },
+            'nutrition-1': {
+                title: 'Nutrition Program',
+                description: 'Promoting healthy eating habits',
+                images: []
+            },
+            'training-1': {
+                title: 'Medical Training Workshop',
+                description: 'Training community health workers',
+                images: []
+            },
+            'counseling-1': {
+                title: 'Family Counseling Session',
+                description: 'Mental health support for families',
+                images: []
+            }
+        };
+
+        let currentGalleryId = '';
+        let currentImageIndex = 0;
+
+        // Get gallery ID from URL
+        function getGalleryIdFromURL() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get('id') || 'mobile-clinic-1';
+        }
+
+        // Load gallery data from localStorage
+        function loadGalleryData() {
+            const savedData = localStorage.getItem('fahio_galleries');
+            if (savedData) {
+                const parsed = JSON.parse(savedData);
+                Object.keys(parsed).forEach(key => {
+                    if (galleries[key]) {
+                        galleries[key].images = parsed[key].images || [];
+                    }
+                });
+            }
+        }
+
+        // Save gallery data to localStorage
+        function saveGalleryData() {
+            localStorage.setItem('fahio_galleries', JSON.stringify(galleries));
+        }
+
+        // Initialize page
+        function initializePage() {
+            currentGalleryId = getGalleryIdFromURL();
+            loadGalleryData();
+            
+            const gallery = galleries[currentGalleryId];
+            if (gallery) {
+                document.getElementById('gallery-title').textContent = gallery.title;
+                document.getElementById('gallery-description').textContent = gallery.description;
+                document.getElementById('breadcrumb-title').textContent = gallery.title;
+                renderGallery();
+            }
+        }
+
+        // Render gallery images
+        function renderGallery() {
+            const galleryContainer = document.getElementById('image-gallery');
+            const emptyState = document.getElementById('empty-state');
+            const images = galleries[currentGalleryId].images;
+
+            if (images.length === 0) {
+                galleryContainer.innerHTML = '';
+                emptyState.classList.remove('hidden');
+            } else {
+                emptyState.classList.add('hidden');
+                galleryContainer.innerHTML = images.map((img, index) => `
+                    <div class="image-preview group relative bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-all duration-300">
+                        <img src="${img}" alt="Gallery image ${index + 1}" class="w-full h-64 object-cover cursor-pointer" onclick="openLightbox(${index})">
+                        <button onclick="deleteImage(${index})" class="delete-btn absolute top-2 right-2 bg-red-600 text-white p-2 rounded-full hover:bg-red-700 transition-all">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+                            </svg>
+                        </button>
+                    </div>
+                `).join('');
+            }
+        }
+
+        // Add image handler
+        document.getElementById('add-image-btn').addEventListener('click', () => {
+            document.getElementById('file-input').click();
+        });
+
+        // File input change handler
+        document.getElementById('file-input').addEventListener('change', (e) => {
+            const files = Array.from(e.target.files);
+            
+            files.forEach(file => {
+                if (file.type.startsWith('image/')) {
+                    const reader = new FileReader();
+                    reader.onload = (event) => {
+                        galleries[currentGalleryId].images.push(event.target.result);
+                        saveGalleryData();
+                        renderGallery();
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+
+            // Reset input
+            e.target.value = '';
+        });
+
+        // Delete image
+        function deleteImage(index) {
+            if (confirm('Are you sure you want to delete this image?')) {
+                galleries[currentGalleryId].images.splice(index, 1);
+                saveGalleryData();
+                renderGallery();
+            }
+        }
+
+        // Lightbox functions
+        function openLightbox(index) {
+            currentImageIndex = index;
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            lightboxImg.src = galleries[currentGalleryId].images[index];
+            lightbox.classList.add('active');
+        }
+
+        document.getElementById('close-lightbox').addEventListener('click', () => {
+            document.getElementById('lightbox').classList.remove('active');
+        });
+
+        document.getElementById('prev-image').addEventListener('click', () => {
+            const images = galleries[currentGalleryId].images;
+            currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+            document.getElementById('lightbox-img').src = images[currentImageIndex];
+        });
+
+        document.getElementById('next-image').addEventListener('click', () => {
+            const images = galleries[currentGalleryId].images;
+            currentImageIndex = (currentImageIndex + 1) % images.length;
+            document.getElementById('lightbox-img').src = images[currentImageIndex];
+        });
+
+        // Close lightbox on background click
+        document.getElementById('lightbox').addEventListener('click', (e) => {
+            if (e.target.id === 'lightbox') {
+                document.getElementById('lightbox').classList.remove('active');
+            }
+        });
+
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuOpenIcon = document.getElementById('menu-open-icon');
+            const menuCloseIcon = document.getElementById('menu-close-icon');
+            
+            mobileMenu.classList.toggle('hidden');
+            menuOpenIcon.classList.toggle('hidden');
+            menuCloseIcon.classList.toggle('hidden');
+        });
+
+        // Initialize on page load
+        initializePage();
+    </script>
+</body>
+</html>

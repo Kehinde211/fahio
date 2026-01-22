@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gallery Detail | FAHIO</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+      .lightbox {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.9);
+        z-index: 9999;
+        justify-content: center;
+        align-items: center;
+      }
+      .lightbox.active {
+        display: flex;
+      }
+      .lightbox img {
+        max-width: 90%;
+        max-height: 90%;
+        object-fit: contain;
+      }
+    </style>
+  </head>
+
+  <body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+      <nav
+        class="container mx-auto px-4 py-4 flex justify-between items-center"
+      >
+        <h1 class="text-2xl font-bold text-[#143887]">FAHIO</h1>
+        <div class="hidden md:flex space-x-6">
+          <a href="index.html" class="text-gray-600 hover:text-[#143887]"
+            >Home</a
+          >
+          <a href="about.html" class="text-gray-600 hover:text-[#143887]"
+            >About</a
+          >
+          <a href="gallery.html" class="text-[#143887] font-medium">Gallery</a>
+          <a href="contact.html" class="text-gray-600 hover:text-[#143887]"
+            >Contact</a
+          >
+        </div>
+      </nav>
+    </header>
+
+    <!-- Breadcrumb -->
+    <section class="bg-white py-4 border-b">
+      <div class="container mx-auto px-4 text-sm">
+        <a href="index.html" class="text-gray-600 hover:text-[#143887]">Home</a>
+        /
+        <a href="gallery.html" class="text-gray-600 hover:text-[#143887]"
+          >Gallery</a
+        >
+        /
+        <span id="breadcrumb-title" class="text-[#143887] font-medium"
+          >Gallery Detail</span
+        >
+      </div>
+    </section>
+
+    <!-- Gallery Detail -->
+    <section class="container mx-auto px-4 py-12">
+      <div class="max-w-6xl mx-auto">
+        <div class="flex justify-between items-center mb-8">
+          <div>
+            <h2
+              id="gallery-title"
+              class="text-3xl font-bold text-gray-800 mb-2"
+            ></h2>
+            <p id="gallery-description" class="text-gray-600"></p>
+          </div>
+
+          <!-- Disabled Add Button -->
+          <button
+            disabled
+            class="bg-gray-400 text-white px-6 py-3 rounded-lg font-semibold cursor-not-allowed opacity-60 flex items-center gap-2"
+          >
+            <svg
+              class="w-5 h-5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 4v16m8-8H4"
+              ></path>
+            </svg>
+            Add Images
+          </button>
+        </div>
+
+        <!-- Gallery Grid -->
+        <div
+          id="image-gallery"
+          class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+        ></div>
+      </div>
+    </section>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox">
+      <button
+        onclick="closeLightbox()"
+        class="absolute top-6 right-6 text-white text-4xl"
+      >
+        &times;
+      </button>
+      <button onclick="prevImage()" class="absolute left-6 text-white text-4xl">
+        &#8249;
+      </button>
+      <img id="lightbox-img" src="" />
+      <button
+        onclick="nextImage()"
+        class="absolute right-6 text-white text-4xl"
+      >
+        &#8250;
+      </button>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12 mt-16">
+      <div class="container mx-auto px-4 text-center text-gray-400">
+        &copy; 2026 FAHIO. All rights reserved.
+      </div>
+    </footer>
+
+    <script>
+      /* ===== STATIC GALLERY DATA ===== */
+      const galleries = {
+        "mobile-clinic-1": {
+          title: "Mobile Clinic Outreach",
+          description: "Providing healthcare in rural communities",
+          images: ["images/five.jpg", "images/seven.jpg", "images/six.jpg"],
+        },
+      };
+
+      const currentGalleryId = "mobile-clinic-1";
+      let currentImageIndex = 0;
+
+      /* ===== INIT ===== */
+      const gallery = galleries[currentGalleryId];
+      document.getElementById("gallery-title").textContent = gallery.title;
+      document.getElementById("gallery-description").textContent =
+        gallery.description;
+      document.getElementById("breadcrumb-title").textContent = gallery.title;
+
+      const galleryContainer = document.getElementById("image-gallery");
+
+      galleryContainer.innerHTML = gallery.images
+        .map(
+          (img, index) => `
+        <div class="bg-white rounded-lg shadow-md overflow-hidden">
+            <img
+                src="${img}"
+                class="w-full h-64 object-cover cursor-pointer"
+                onclick="openLightbox(${index})"
+            >
+        </div>
+    `
+        )
+        .join("");
+
+      /* ===== LIGHTBOX ===== */
+      function openLightbox(index) {
+        currentImageIndex = index;
+        document.getElementById("lightbox-img").src = gallery.images[index];
+        document.getElementById("lightbox").classList.add("active");
+      }
+
+      function closeLightbox() {
+        document.getElementById("lightbox").classList.remove("active");
+      }
+
+      function nextImage() {
+        currentImageIndex = (currentImageIndex + 1) % gallery.images.length;
+        document.getElementById("lightbox-img").src =
+          gallery.images[currentImageIndex];
+      }
+
+      function prevImage() {
+        currentImageIndex =
+          (currentImageIndex - 1 + gallery.images.length) %
+          gallery.images.length;
+        document.getElementById("lightbox-img").src =
+          gallery.images[currentImageIndex];
+      }
+    </script>
+  </body>
+</html>

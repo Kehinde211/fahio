@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gallery | FAHIO</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      .filter-btn.active {
+        background-color: #143887;
+        color: white;
+      }
+
+      .gallery-item {
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .gallery-item:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 10px 25px rgba(20, 56, 135, 0.3);
+      }
+
+      .gallery-item:hover .p-4 {
+        background-color: #143887;
+      }
+
+      .gallery-item:hover h3,
+      .gallery-item:hover p {
+        color: white;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+      <nav class="container mx-auto px-4 py-4">
+        <div class="flex justify-between items-center">
+          <h1 class="text-2xl font-bold text-[#143887]">FAHIO</h1>
+          <div class="hidden md:flex space-x-6">
+            <a
+              href="index.html"
+              class="text-gray-600 cursor-pointer font-medium hover:text-[#143887]"
+              >Home</a
+            >
+            <a
+              href="about.html"
+              class="text-gray-600 cursor-pointer hover:text-[#143887]"
+              >About</a
+            >
+            <a
+              href="mission.html"
+              class="text-gray-600 cursor-pointer hover:text-[#143887]"
+              >Mission</a
+            >
+            <a
+              href="gallery.html"
+              class="text-[#143887] font-medium cursor-pointer"
+              >Gallery</a
+            >
+            <a
+              href="contact.html"
+              class="text-gray-600 cursor-pointer hover:text-[#143887]"
+              >Contact</a
+            >
+          </div>
+          <button
+            id="mobile-menu-btn"
+            class="md:hidden text-gray-600 focus:outline-none"
+          >
+            <svg
+              id="menu-open-icon"
+              class="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              ></path>
+            </svg>
+            <svg
+              id="menu-close-icon"
+              class="w-6 h-6 hidden"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M6 18L18 6M6 6l12 12"
+              ></path>
+            </svg>
+          </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4 space-y-2">
+          <a
+            href="index.html"
+            class="block py-2 text-gray-600 hover:text-[#143887] hover:bg-blue-50 px-2 rounded"
+            >Home</a
+          >
+          <a
+            href="about.html"
+            class="block py-2 text-gray-600 hover:text-[#143887] hover:bg-blue-50 px-2 rounded"
+            >About</a
+          >
+          <a
+            href="mission.html"
+            class="block py-2 text-gray-600 hover:text-[#143887] hover:bg-blue-50 px-2 rounded"
+            >Mission</a
+          >
+          <a
+            href="gallery.html"
+            class="block py-2 text-[#143887] font-medium hover:bg-blue-50 px-2 rounded"
+            >Gallery</a
+          >
+          <a
+            href="contact.html"
+            class="block py-2 text-gray-600 hover:text-[#143887] hover:bg-blue-50 px-2 rounded"
+            >Contact</a
+          >
+        </div>
+      </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section
+      class="relative bg-cover bg-center text-white py-20 md:py-32"
+      style="background-image: url('/images/gallery.jpg')"
+    >
+      <div class="absolute inset-0 bg-[#143887]/40 backdrop-blur-sm"></div>
+
+      <div class="container relative z-10 mx-auto px-4 text-center">
+        <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+          Our Gallery
+        </h2>
+        <p
+          class="text-lg md:text-xl lg:text-2xl text-white/90 mb-8 max-w-3xl mx-auto"
+        >
+          Moments that matter. Lives transformed
+        </p>
+      </div>
+    </section>
+
+    <!-- Filter Tabs -->
+    <section class="container mx-auto px-4 py-8">
+      <div class="flex flex-wrap justify-center gap-4">
+        <button
+          class="filter-btn active px-6 py-2 bg-white hover:bg-[#143887] hover:text-white text-gray-700 rounded-full font-medium transition-colors"
+          data-filter="all"
+        >
+          All
+        </button>
+        <button
+          class="filter-btn px-6 py-2 bg-white text-gray-700 rounded-full hover:bg-[#143887] hover:text-white font-medium transition-colors border border-gray-200"
+          data-filter="mobile-clinics"
+        >
+          Mobile Clinics
+        </button>
+        <button
+          class="filter-btn px-6 py-2 bg-white text-gray-700 rounded-full hover:bg-[#143887] hover:text-white font-medium transition-colors border border-gray-200"
+          data-filter="health-education"
+        >
+          Health Education
+        </button>
+        <button
+          class="filter-btn px-6 py-2 bg-white text-gray-700 rounded-full hover:bg-[#143887] hover:text-white font-medium transition-colors border border-gray-200"
+          data-filter="community-outreach"
+        >
+          Community Outreach
+        </button>
+        <button
+          class="filter-btn px-6 py-2 bg-white text-gray-700 rounded-full hover:bg-[#143887] hover:text-white font-medium transition-colors border border-gray-200"
+          data-filter="events"
+        >
+          Events
+        </button>
+      </div>
+    </section>
+
+    <!-- Gallery Grid -->
+    <section class="container mx-auto px-4 py-8 pb-16">
+      <div
+        id="gallery-grid"
+        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+      >
+        <!-- Gallery Item 1 -->
+        <div
+          class="gallery-item group relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 bg-white"
+          data-category="mobile-clinics"
+          onclick="window.location.href='mobile.html?id=mobile-clinic-1'"
+        >
+          <div class="aspect-w-4 aspect-h-3 bg-gray-200">
+            <div
+              class="w-full h-64 sm:h-72 md:h-80 bg-gray-200 overflow-hidden flex items-center justify-center"
+            >
+              <img
+                src="/images/one.jpg"
+                alt="Balogun Oluwakemi Olatundun"
+                class="w-full h-full object-contain"
+                onerror="this.onerror=null; this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22200%22%3E%3Crect fill=%22%23f3f4f6%22 width=%22200%22 height=%22200%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-family=%22monospace%22 font-size=%2216px%22 fill=%22%236b7280%22%3EImage not found%3C/text%3E%3C/svg%3E';"
+              />
+            </div>
+          </div>
+          <div class="p-4">
+            <h3 class="font-semibold text-gray-800 mb-1">
+              Mobile Clinic Outreach
+            </h3>
+            <p class="text-sm text-gray-600">
+              Providing healthcare in rural communities
+            </p>
+          </div>
+        </div>
+
+        <!-- Gallery Item 2 -->
+        <div
+          class="gallery-item group relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 bg-white"
+          data-category="health-education"
+          onclick="window.location.href='health.html?id=health-education-1'"
+        >
+          <div class="aspect-w-4 aspect-h-3 bg-gray-200">
+            <div
+              class="w-full h-64 sm:h-72 md:h-80 bg-gray-200 overflow-hidden flex items-center justify-center"
+            >
+              <img
+                src="/images/two.jpg"
+                alt="Balogun Oluwakemi Olatundun"
+                class="w-full h-full object-contain"
+                onerror="this.onerror=null; this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22200%22%3E%3Crect fill=%22%23f3f4f6%22 width=%22200%22 height=%22200%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-family=%22monospace%22 font-size=%2216px%22 fill=%22%236b7280%22%3EImage not found%3C/text%3E%3C/svg%3E';"
+              />
+            </div>
+          </div>
+          <div class="p-4">
+            <h3 class="font-semibold text-gray-800 mb-1">
+              Health Education Workshop
+            </h3>
+            <p class="text-sm text-gray-600">
+              Teaching families about preventive care
+            </p>
+          </div>
+        </div>
+
+        <!-- Gallery Item 3 -->
+        <div
+          class="gallery-item group relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 bg-white"
+          data-category="community-outreach"
+          onclick="window.location.href='community.html?id=maternal-health-1'"
+        >
+          <div class="aspect-w-4 aspect-h-3 bg-gray-200">
+            <div
+              class="w-full h-64 sm:h-72 md:h-80 bg-gray-200 overflow-hidden flex items-center justify-center"
+            >
+              <img
+                src="/images/three.jpg"
+                alt="Balogun Oluwakemi Olatundun"
+                class="w-full h-full object-contain"
+                onerror="this.onerror=null; this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22200%22%3E%3Crect fill=%22%23f3f4f6%22 width=%22200%22 height=%22200%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-family=%22monospace%22 font-size=%2216px%22 fill=%22%236b7280%22%3EImage not found%3C/text%3E%3C/svg%3E';"
+              />
+            </div>
+          </div>
+          <div class="p-4">
+            <h3 class="font-semibold text-gray-800 mb-1">
+              Maternal Health Care
+            </h3>
+            <p class="text-sm text-gray-600">Supporting expecting mothers</p>
+          </div>
+        </div>
+
+        <!-- Gallery Item 4 -->
+        <div
+          class="gallery-item group relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 bg-white"
+          data-category="events"
+          onclick="window.location.href='community.html?id=health-fair-1'"
+        >
+          <div class="aspect-w-4 aspect-h-3 bg-gray-200">
+            <div
+              class="w-full h-64 sm:h-72 md:h-80 bg-gray-200 overflow-hidden flex items-center justify-center"
+            >
+              <img
+                src="/images/four.jpg"
+                alt="Balogun Oluwakemi Olatundun"
+                class="w-full h-full object-contain"
+                onerror="this.onerror=null; this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22200%22%3E%3Crect fill=%22%23f3f4f6%22 width=%22200%22 height=%22200%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-family=%22monospace%22 font-size=%2216px%22 fill=%22%236b7280%22%3EImage not found%3C/text%3E%3C/svg%3E';"
+              />
+            </div>
+          </div>
+          <div class="p-4">
+            <h3 class="font-semibold text-gray-800 mb-1">
+              Community Health Fair
+            </h3>
+            <p class="text-sm text-gray-600">
+              Bringing health services to the community
+            </p>
+          </div>
+        </div>
+
+        <!-- Gallery Item 5 -->
+        <div
+          class="gallery-item group relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 bg-white"
+          data-category="mobile-clinics"
+          onclick="window.location.href='immunization.html?id=immunization-1'"
+        >
+          <div class="aspect-w-4 aspect-h-3 bg-gray-200">
+            <div
+              class="w-full h-64 sm:h-72 md:h-80 bg-gray-200 overflow-hidden flex items-center justify-center"
+            >
+              <img
+                src="/images/five.jpg"
+                alt="Balogun Oluwakemi Olatundun"
+                class="w-full h-full object-contain"
+                onerror="this.onerror=null; this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22200%22%3E%3Crect fill=%22%23f3f4f6%22 width=%22200%22 height=%22200%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-family=%22monospace%22 font-size=%2216px%22 fill=%22%236b7280%22%3EImage not found%3C/text%3E%3C/svg%3E';"
+              />
+            </div>
+          </div>
+          <div class="p-4">
+            <h3 class="font-semibold text-gray-800 mb-1">
+              Child Immunization Drive
+            </h3>
+            <p class="text-sm text-gray-600">
+              Protecting children through vaccination
+            </p>
+          </div>
+        </div>
+
+        <!-- Gallery Item 6 -->
+        <div
+          class="gallery-item group relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 bg-white"
+          data-category="health-education"
+          onclick="window.location.href='screening.html?id=screening-1'"
+        >
+          <div class="aspect-w-4 aspect-h-3 bg-gray-200">
+            <div
+              class="w-full h-64 sm:h-72 md:h-80 bg-gray-200 overflow-hidden flex items-center justify-center"
+            >
+              <img
+                src="/images/six.jpg"
+                alt="Balogun Oluwakemi Olatundun"
+                class="w-full h-full object-contain"
+                onerror="this.onerror=null; this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22200%22%3E%3Crect fill=%22%23f3f4f6%22 width=%22200%22 height=%22200%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-family=%22monospace%22 font-size=%2216px%22 fill=%22%236b7280%22%3EImage not found%3C/text%3E%3C/svg%3E';"
+              />
+            </div>
+          </div>
+          <div class="p-4">
+            <h3 class="font-semibold text-gray-800 mb-1">
+              Health Screening Program
+            </h3>
+            <p class="text-sm text-gray-600">Free health checks for families</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="container mx-auto px-4 py-16 my-auto">
+      <div
+        class="bg-gradient-to-r from-blue-900 to-indigo-600 rounded-2xl p-8 md:p-12 text-center text-white"
+      >
+        <h3 class="text-3xl font-bold mb-4">Want to Be Part of Our Story?</h3>
+        <p class="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
+          Join us in making a difference in the lives of families who need it
+          most.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a
+            href="contact.html"
+            class="bg-white cursor-pointer text-[#143887] px-8 py-3 rounded-lg font-semibold hover:bg-[#143887] hover:text-white transition-colors"
+            >Get Involved</a
+          >
+          <a
+            href="about.html"
+            class="border-2 cursor-pointer text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-[#143887] transition-colors"
+            >Learn More</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+      <div class="container mx-auto px-4">
+        <div class="grid md:grid-cols-3 gap-8">
+          <div>
+            <h3 class="text-xl font-bold mb-4">FAHIO</h3>
+            <p class="text-gray-400">
+              Family Health Initiative Ogun - Empowering families through
+              quality healthcare.
+            </p>
+          </div>
+          <div>
+            <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+            <ul class="space-y-2">
+              <li>
+                <a
+                  href="about.html"
+                  class="text-gray-400 cursor-pointer hover:text-white"
+                  >About Us</a
+                >
+              </li>
+              <li>
+                <a
+                  href="mission.html"
+                  class="text-gray-400 cursor-pointer hover:text-white"
+                  >Mission</a
+                >
+              </li>
+              <li>
+                <a
+                  href="gallery.html"
+                  class="text-gray-400 cursor-pointer hover:text-white"
+                  >Gallery</a
+                >
+              </li>
+              <li>
+                <a
+                  href="contact.html"
+                  class="text-gray-400 cursor-pointer hover:text-white"
+                  >Contact</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="text-lg font-semibold mb-4">Contact Info</h4>
+            <p class="text-gray-400">Email: info@fahio.org</p>
+            <p class="text-gray-400">Phone: +234 803 352 8629</p>
+          </div>
+        </div>
+        <div
+          class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400"
+        >
+          <p>&copy; 2026 FAHIO. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById("mobile-menu-btn");
+        const mobileMenu = document.getElementById("mobile-menu");
+        const menuOpenIcon = document.getElementById("menu-open-icon");
+        const menuCloseIcon = document.getElementById("menu-close-icon");
+
+        mobileMenuBtn.addEventListener("click", function () {
+          mobileMenu.classList.toggle("hidden");
+          menuOpenIcon.classList.toggle("hidden");
+          menuCloseIcon.classList.toggle("hidden");
+        });
+
+        // Gallery filter functionality
+        const filterBtns = document.querySelectorAll(".filter-btn");
+        const galleryItems = document.querySelectorAll(".gallery-item");
+
+        filterBtns.forEach((btn) => {
+          btn.addEventListener("click", function () {
+            const filterValue = this.getAttribute("data-filter");
+
+            // Remove active class from all buttons
+            filterBtns.forEach((b) => b.classList.remove("active"));
+
+            // Add active class to clicked button
+            this.classList.add("active");
+
+            // Filter gallery items
+            galleryItems.forEach((item) => {
+              if (filterValue === "all") {
+                item.style.display = "block";
+              } else {
+                if (item.getAttribute("data-category") === filterValue) {
+                  item.style.display = "block";
+                } else {
+                  item.style.display = "none";
+                }
+              }
+            });
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
