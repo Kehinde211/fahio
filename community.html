@@ -4,9 +4,51 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Gallery Detail | FAHIO</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:wght@600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Tailwind -->
     <script src="https://cdn.tailwindcss.com"></script>
 
     <style>
+      :root {
+        --primary: #143887;
+        --primary-dark: #0f2a5e;
+        --accent: #00c896;
+      }
+
+      body {
+        font-family: 'DM Sans', sans-serif;
+        overflow-x: hidden;
+      }
+
+      h1, h2, h3 {
+        font-family: 'Fraunces', serif;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      .glass {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+      }
+
+      .mobile-menu {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+      }
+
+      .mobile-menu.active {
+        max-height: 300px;
+      }
+
+      /* Lightbox */
       .lightbox {
         display: none;
         position: fixed;
@@ -16,9 +58,11 @@
         justify-content: center;
         align-items: center;
       }
+
       .lightbox.active {
         display: flex;
       }
+
       .lightbox img {
         max-width: 90%;
         max-height: 90%;
@@ -28,71 +72,65 @@
   </head>
 
   <body class="bg-gray-50">
+
     <!-- Header -->
-    <header class="bg-white shadow-sm sticky top-0 z-50">
-      <nav
-        class="container mx-auto px-4 py-4 flex justify-between items-center"
-      >
-        <h1 class="text-2xl font-bold text-[#143887]">FAHIO</h1>
-        <div class="hidden md:flex space-x-6">
-          <a href="index.html" class="text-gray-600 hover:text-[#143887]"
-            >Home</a
-          >
-          <a href="about.html" class="text-gray-600 hover:text-[#143887]"
-            >About</a
-          >
-          <a href="gallery.html" class="text-[#143887] font-medium">Gallery</a>
-          <a href="contact.html" class="text-gray-600 hover:text-[#143887]"
-            >Contact</a
-          >
+    <header class="glass sticky top-0 z-50 border-b border-gray-100">
+      <nav class="container mx-auto px-4 py-5">
+        <div class="flex justify-between items-center">
+          <h1 class="text-3xl font-bold text-[#143887]">FAHIO</h1>
+
+          <div class="hidden md:flex items-center space-x-8">
+            <a href="index.html" class="text-gray-600 hover:text-[#143887]">Home</a>
+            <a href="about.html" class="text-gray-600 hover:text-[#143887]">About</a>
+            <a href="gallery.html" class="text-[#143887] font-semibold">Gallery</a>
+            <a href="contact.html" class="btn-primary bg-[#143887] text-white px-6 py-2.5 rounded-full font-medium hover:bg-[#0f2a5e]">
+              Contact
+            </a>
+          </div>
+
+          <button id="mobile-menu-btn" class="md:hidden text-gray-600">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="mobile-menu md:hidden">
+          <div class="pt-4 space-y-3">
+            <a href="index.html" class="block py-2 text-gray-600">Home</a>
+            <a href="about.html" class="block py-2 text-gray-600">About</a>
+            <a href="gallery.html" class="block py-2 text-[#143887] font-medium">Gallery</a>
+            <a href="contact.html" class="block py-2 text-gray-600">Contact</a>
+          </div>
         </div>
       </nav>
     </header>
 
     <!-- Breadcrumb -->
-    <section class="bg-white py-4 border-b">
-      <div class="container mx-auto px-4 text-sm">
-        <a href="index.html" class="text-gray-600 hover:text-[#143887]">Home</a>
-        /
-        <a href="gallery.html" class="text-gray-600 hover:text-[#143887]"
-          >Gallery</a
-        >
-        /
-        <span id="breadcrumb-title" class="text-[#143887] font-medium"
-          >Gallery Detail</span
-        >
+    <section class="bg-white border-b">
+      <div class="container mx-auto px-4 py-4 text-sm text-gray-600">
+        <a href="index.html" class="hover:text-[#143887]">Home</a> /
+        <a href="gallery.html" class="hover:text-[#143887]">Gallery</a> /
+        <span id="breadcrumb-title" class="text-[#143887] font-medium">Gallery Detail</span>
       </div>
     </section>
 
     <!-- Gallery Detail -->
-    <section class="container mx-auto px-4 py-12">
-      <div class="max-w-6xl mx-auto">
-        <div class="flex justify-between items-center mb-8">
+    <section class="py-20">
+      <div class="container mx-auto px-4 max-w-6xl">
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-12 gap-6">
           <div>
-            <h2
-              id="gallery-title"
-              class="text-3xl font-bold text-gray-800 mb-2"
-            ></h2>
-            <p id="gallery-description" class="text-gray-600"></p>
+            <h2 id="gallery-title" class="text-4xl font-bold text-[#143887] mb-2"></h2>
+            <p id="gallery-description" class="text-gray-600 max-w-2xl"></p>
           </div>
 
-          <!-- Disabled Add Button -->
           <button
             disabled
-            class="bg-gray-400 text-white px-6 py-3 rounded-lg font-semibold cursor-not-allowed opacity-60 flex items-center gap-2"
+            class="bg-gray-300 text-white px-6 py-3 rounded-full font-semibold cursor-not-allowed opacity-60 flex items-center gap-2"
           >
-            <svg
-              class="w-5 h-5"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M12 4v16m8-8H4"
-              ></path>
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
             </svg>
             Add Images
           </button>
@@ -101,75 +139,72 @@
         <!-- Gallery Grid -->
         <div
           id="image-gallery"
-          class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+          class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
         ></div>
       </div>
     </section>
 
     <!-- Lightbox -->
     <div id="lightbox" class="lightbox">
-      <button
-        onclick="closeLightbox()"
-        class="absolute top-6 right-6 text-white text-4xl"
-      >
-        &times;
-      </button>
-      <button onclick="prevImage()" class="absolute left-6 text-white text-4xl">
-        &#8249;
-      </button>
+      <button onclick="closeLightbox()" class="absolute top-6 right-6 text-white text-4xl">&times;</button>
+      <button onclick="prevImage()" class="absolute left-6 text-white text-4xl">&#8249;</button>
       <img id="lightbox-img" src="" />
-      <button
-        onclick="nextImage()"
-        class="absolute right-6 text-white text-4xl"
-      >
-        &#8250;
-      </button>
+      <button onclick="nextImage()" class="absolute right-6 text-white text-4xl">&#8250;</button>
     </div>
 
     <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-12 mt-16">
+    <footer class="bg-gray-900 text-white py-16">
       <div class="container mx-auto px-4 text-center text-gray-400">
-        &copy; 2026 FAHIO. All rights reserved.
+        <p>&copy; 2026 FAHIO. All rights reserved.</p>
       </div>
     </footer>
 
     <script>
+      // Mobile menu
+      const mobileMenuBtn = document.getElementById("mobile-menu-btn");
+      const mobileMenu = document.getElementById("mobile-menu");
+      mobileMenuBtn.addEventListener("click", () => {
+        mobileMenu.classList.toggle("active");
+      });
+
       /* ===== STATIC GALLERY DATA ===== */
       const galleries = {
         "mobile-clinic-1": {
-          title: "Mobile Clinic Outreach",
-          description: "Providing healthcare in rural communities",
-          images: ["images/four.jpg", "images/five.jpg", "images/six.jpg"],
+          title: "Stakeholders Dialogue",
+          description: "Family Planning Financing at Primary Health Care Board, Oke-Mosan, Abeokuta",
+          images: [
+            "images/pictures/media-parley/dialogue/one.jpg",
+            "images/pictures/media-parley/dialogue/two.jpg",
+            "images/pictures/media-parley/dialogue/three.jpg",
+            "images/pictures/media-parley/dialogue/four.jpg",
+            "images/pictures/media-parley/dialogue/five.jpg",
+            "images/pictures/media-parley/dialogue/seven.jpg",
+            "images/pictures/media-parley/dialogue/eight.jpg",
+            "images/pictures/media-parley/dialogue/nine.jpg",
+            "images/pictures/media-parley/dialogue/ten.jpg",
+          ],
         },
       };
 
       const currentGalleryId = "mobile-clinic-1";
       let currentImageIndex = 0;
 
-      /* ===== INIT ===== */
       const gallery = galleries[currentGalleryId];
       document.getElementById("gallery-title").textContent = gallery.title;
-      document.getElementById("gallery-description").textContent =
-        gallery.description;
+      document.getElementById("gallery-description").textContent = gallery.description;
       document.getElementById("breadcrumb-title").textContent = gallery.title;
 
       const galleryContainer = document.getElementById("image-gallery");
-
       galleryContainer.innerHTML = gallery.images
         .map(
           (img, index) => `
-        <div class="bg-white rounded-lg shadow-md overflow-hidden">
-            <img
-                src="${img}"
-                class="w-full h-64 object-cover cursor-pointer"
-                onclick="openLightbox(${index})"
-            >
-        </div>
-    `
+          <div class="bg-white rounded-2xl shadow-lg overflow-hidden cursor-pointer group">
+            <img src="${img}" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500" onclick="openLightbox(${index})">
+          </div>
+        `
         )
         .join("");
 
-      /* ===== LIGHTBOX ===== */
       function openLightbox(index) {
         currentImageIndex = index;
         document.getElementById("lightbox-img").src = gallery.images[index];
@@ -182,16 +217,12 @@
 
       function nextImage() {
         currentImageIndex = (currentImageIndex + 1) % gallery.images.length;
-        document.getElementById("lightbox-img").src =
-          gallery.images[currentImageIndex];
+        document.getElementById("lightbox-img").src = gallery.images[currentImageIndex];
       }
 
       function prevImage() {
-        currentImageIndex =
-          (currentImageIndex - 1 + gallery.images.length) %
-          gallery.images.length;
-        document.getElementById("lightbox-img").src =
-          gallery.images[currentImageIndex];
+        currentImageIndex = (currentImageIndex - 1 + gallery.images.length) % gallery.images.length;
+        document.getElementById("lightbox-img").src = gallery.images[currentImageIndex];
       }
     </script>
   </body>

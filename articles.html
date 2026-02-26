@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Articles | FAHIO</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    :root {
+      --primary: #143887;
+      --primary-dark: #0f2a5e;
+      --accent: #00c896;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Fraunces', serif;
+    }
+
+    .glass {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+    }
+
+    .mobile-menu {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+    }
+
+    .mobile-menu.active {
+      max-height: 300px;
+    }
+  </style>
+</head>
+
+<body class="bg-gray-50">
+
+  <!-- Header -->
+  <header class="glass sticky top-0 z-50 border-b border-gray-100">
+    <nav class="container mx-auto px-4 py-5">
+      <div class="flex justify-between items-center">
+        <h1 class="text-3xl font-bold text-[#143887]">FAHIO</h1>
+
+        <div class="hidden md:flex items-center space-x-8">
+          <a href="index.html" class="text-gray-600 hover:text-[#143887]">Home</a>
+          <a href="about.html" class="text-gray-600 hover:text-[#143887]">About</a>
+          <a href="articles.html" class="text-[#143887] font-semibold">Articles</a>
+          <a href="contact.html" class="bg-[#143887] text-white px-6 py-2.5 rounded-full font-medium hover:bg-[#0f2a5e]">
+            Contact
+          </a>
+        </div>
+
+        <button id="mobile-menu-btn" class="md:hidden text-gray-600">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div id="mobile-menu" class="mobile-menu md:hidden">
+        <div class="pt-4 space-y-3">
+          <a href="index.html" class="block py-2 text-gray-600">Home</a>
+          <a href="about.html" class="block py-2 text-gray-600">About</a>
+          <a href="articles.html" class="block py-2 text-[#143887] font-medium">Articles</a>
+          <a href="contact.html" class="block py-2 text-gray-600">Contact</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Breadcrumb -->
+  <section class="bg-white border-b">
+    <div class="container mx-auto px-4 py-4 text-sm text-gray-600">
+      <a href="index.html" class="hover:text-[#143887]">Home</a> /
+      <span class="text-[#143887] font-medium">Articles</span>
+    </div>
+  </section>
+
+  <!-- Articles -->
+  <section class="py-20">
+    <div class="container mx-auto px-4 max-w-4xl space-y-16">
+
+      <!-- Article 1 -->
+      <article class="bg-white rounded-2xl shadow-lg p-8">
+  <!-- Article Image -->
+  <div class="mb-8">
+    <img
+      src="images/pictures/sango/seven.jpg"
+      alt="Article image"
+      class="w-full h-72 object-cover rounded-2xl"
+    />
+  </div>
+
+  <h2 class="text-3xl font-bold text-[#143887] mb-6">
+    Women in Ado-Odo/Ota, Odeda LGAs Get Free Cervical Cancer Screening
+  </h2>
+
+  <div class="text-gray-700 leading-relaxed space-y-4">
+    <p>As part of efforts to ensure early detection of issues that can possibly lead to cervical cancer, women in Ado-Odo/Ota and Odeda Local Government Areas of Ogun State benefited from a free cervical cancer screening.</p>
+
+    <p>The screening outreaches, held to commemorate Cancer Awareness Month, was jointly organized by the Family Health Initiative (FAHIO), in collaboration with the Ogun State Primary Health Care Board alongside the Medical Women's Association of Nigeria, Ogun State Chapter, with support from Pathfinder International.</p>
+
+    <p>Speaking at the outreach, Chairperson of FAHIO, Mrs. Oluwakemi Balogun, represented by the Human Paplilomavirus (HPV) Community Champions, Alhaji (Chief) Waheed Adeyinka and Mrs. Saheed Adesola, emphasized the need for continuous awareness on prevention and early detection of cervical cancer among women.</p>
+
+    <p>Mrs. Balogun noted that the HPV vaccine is freely available in government health facilities to protect girls children of age 9 years before they become sexually active, while women of child-bearing age should undergo regular screening.</p>
+
+    <p>'I urge other women who are not opportune to partake in this outreach to visit government health facilities in their areas for the screening in order to know their  health status', she stated.</p>
+
+    <p>Contributing, President of the Medical Women's Association of Nigeria, Ogun State Chapter, Dr. Deborah Osisanwo, stated that cervical and breast cancers are common among women, and regular check-ups are essential for them to stay safe and healthy.</p>
+
+    <p>'This association realized the enormous tasks that women are undertaking in society. Their health and well-being are important to us, that is why we are championing this course', she said.</p>
+
+    <p>On his part, the State Coordinator of Pathfinder International, Mr. Emah Udeme, reaffirmed the organisation's commitment to cervical cancer awareness and screening, noting that its elimination by 2030 in the country remains sacrosanct.</p>
+
+    <p>Beneficiaries, including Mrs. Balikis Taiwo, and Mrs. Temitope Gbadamosi expressed gratitude to the organizers for the free screening.describing it as a necessity for women to undergo.</p>
+
+    <p>The event featured health talks on HPV vaccination, cervical cancer, breast examination, and family planning/child spacing, among others.</p>
+  </div>
+</article>
+
+
+      <!-- Article 2 -->
+      <article class="bg-white rounded-2xl shadow-lg p-8">
+  <!-- Article Image -->
+  <div class="mb-8">
+    <img
+      src="images/pictures/odeda/one.jpg"
+      alt="Article image"
+      class="w-full h-72 object-cover rounded-2xl"
+    />
+  </div>
+
+  <h2 class="text-3xl font-bold text-[#143887] mb-6">
+    Ogun School Health Teachers Trained to Boost HPV Vaccination Coverage
+  </h2>
+
+  <div class="text-gray-700 leading-relaxed space-y-4">
+    <p>Family Health Initiative (FAHIO), in collaboration with the Primary Health Care Board with the support of Pathfinder International, has commenced training of health teachers and counsellors across primary schools in Ogun state, to enhance their knowledge on the importance of Human Papillomavirus (HPV) vaccination.</p>
+
+    <p>The training, which drew participants from  Odeda, Yewa North, and Ijebu North Local Government Areas (LGAs), aimed to equip Health Teachers and Counsellors with skills to educate pupils and Parents Teachers Association (PTA) about HPV prevention and  benefits of its vaccination.</p>
+
+    <p>Speaking at the training,  Chairperson of FAHIO, Mrs. Oluwakemi Balogun, emphasized the crucial role health teachers play in promoting HPV vaccination, saying their involvement would help the State meet national and the state target of vaccinated girls by 2030.</p>
+
+    <p>'This organisation is passionate about protecting the future of our children, particularly the teenage girls, hence, we are promoting the uptake of vaccine preventable diseases such as cervical cancer. The organizers are 
+ glad with the turnout of the participants, and shall intensify effort to ensure that  the training is extended to other health teachers in the remaining 17 LGAs.</p>
+
+    <p>"We urge all and sundry to work towards ensuring that parents and caregivers accept the vaccination for the the overall well-being of their teenage girls'', Balogun stated.</p>
+
+    <p>In his goodwill message, the Executive Secretary of the State  Primary Health Care Development Board, Dr. Elijah Ogunsola, commended  the health teachers for their dedication to sound health practices, enjoining them to collaborate with health workers in their areas  to drive government health initiatives.</p>
+
+    <p>Also speaking, the representative of World Health Organization in the State, Dr. Talaat Aladesawa and the State Coordinator of National Primary Healthcare Development Agency, Dr. Folarin Solape sought  the support of the teachers to always encourage  parents to utilize government health centres for  routine  immunization, saying HPV vaccination is free, effective and safe</p>
+
+    <p>In his remark, the State Coordinator of  Pathfinder International, Mr. Emah Udeme, thanked participants for their commitment to champion the course of  HPV vaccination awareness, stressing the need for accurate information dissemination.</p>
+
+    <p>Earlier in his presentation, the State Health Educator, Mr. Waheed Elegbede took participants through major vaccines preventable diseases that affect children, noting  that  the virus that causes cervical cancer could  be prevented by HPV  vaccination.</p>
+
+    <p>Speaking on behalf of other participants, Mr. Mufutau Ajani and Mrs. Bolanle  Bankole said the training has  broadened their understanding of HPV vaccination and its benefits.</p>
+  </div>
+</article>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white py-16">
+    <div class="container mx-auto px-4 text-center text-gray-400">
+      <p>&copy; 2026 FAHIO. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    const mobileMenuBtn = document.getElementById("mobile-menu-btn");
+    const mobileMenu = document.getElementById("mobile-menu");
+
+    mobileMenuBtn.addEventListener("click", () => {
+      mobileMenu.classList.toggle("active");
+    });
+  </script>
+
+</body>
+</html>
