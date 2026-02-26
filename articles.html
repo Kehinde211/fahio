@@ -4,44 +4,23 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Articles | FAHIO</title>
-
-  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:wght@600;700;800&display=swap" rel="stylesheet">
-
-  <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
 
   <style>
-    :root {
-      --primary: #143887;
-      --primary-dark: #0f2a5e;
-      --accent: #00c896;
-    }
-
     body {
       font-family: 'DM Sans', sans-serif;
-      overflow-x: hidden;
     }
-
     h1, h2, h3 {
       font-family: 'Fraunces', serif;
     }
-
-    .glass {
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(10px);
+    .article-card {
+      transition: all 0.3s ease;
     }
-
-    .mobile-menu {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.3s ease;
-    }
-
-    .mobile-menu.active {
-      max-height: 300px;
+    .article-card:hover {
+      transform: translateY(-8px);
     }
   </style>
 </head>
@@ -49,146 +28,208 @@
 <body class="bg-gray-50">
 
   <!-- Header -->
-  <header class="glass sticky top-0 z-50 border-b border-gray-100">
+  <header class="bg-white/95 backdrop-blur-md shadow-sm sticky top-0 z-50">
     <nav class="container mx-auto px-4 py-5">
       <div class="flex justify-between items-center">
-        <h1 class="text-3xl font-bold text-[#143887]">FAHIO</h1>
+        <div class="flex items-center gap-3">
+          <!-- <div class="w-10 h-10 bg-gradient-to-br from-[#143887] to-[#1e56b8] rounded-lg flex items-center justify-center">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+            </svg>
+          </div> -->
+          <h1 class="text-2xl font-bold text-[#143887]">FAHIO</h1>
+        </div>
 
         <div class="hidden md:flex items-center space-x-8">
-          <a href="index.html" class="text-gray-600 hover:text-[#143887]">Home</a>
-          <a href="about.html" class="text-gray-600 hover:text-[#143887]">About</a>
-          <a href="articles.html" class="text-[#143887] font-semibold">Articles</a>
-          <a href="contact.html" class="bg-[#143887] text-white px-6 py-2.5 rounded-full font-medium hover:bg-[#0f2a5e]">
-            Contact
-          </a>
+          <a href="index.html" class="text-sm text-gray-600 hover:text-[#143887]">Home</a>
+          <a href="about.html" class="text-sm text-gray-600 hover:text-[#143887]">About</a>
+          <a href="mission.html" class="text-sm text-gray-600 hover:text-[#143887]">Mission</a>
+          <a href="gallery.html" class="text-sm text-gray-600 hover:text-[#143887]">Gallery</a>
+          <a href="articles.html" class="text-sm text-[#143887] font-semibold border-b-2 border-[#143887] pb-1">News</a>
+          <a href="contact.html" class="btn-primary bg-[#143887] text-white px-6 py-2.5 rounded-full font-medium hover:bg-[#0f2a5e] transition-all">
+              Contact
+            </a>
         </div>
 
         <button id="mobile-menu-btn" class="md:hidden text-gray-600">
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-              d="M4 6h16M4 12h16M4 18h16"></path>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
           </svg>
         </button>
       </div>
 
       <!-- Mobile Menu -->
-      <div id="mobile-menu" class="mobile-menu md:hidden">
-        <div class="pt-4 space-y-3">
-          <a href="index.html" class="block py-2 text-gray-600">Home</a>
-          <a href="about.html" class="block py-2 text-gray-600">About</a>
-          <a href="articles.html" class="block py-2 text-[#143887] font-medium">Articles</a>
-          <a href="contact.html" class="block py-2 text-gray-600">Contact</a>
-        </div>
+      <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4 space-y-2">
+        <a href="index.html" class="block py-2 px-3 text-sm text-gray-600 hover:bg-gray-50 rounded-lg">Home</a>
+        <a href="about.html" class="block py-2 px-3 text-sm text-gray-600 hover:bg-gray-50 rounded-lg">About</a>
+        <a href="mission.html" class="block py-2 px-3 text-sm text-gray-600 hover:bg-gray-50 rounded-lg">Mission</a>
+        <a href="gallery.html" class="block py-2 px-3 text-sm text-gray-600 hover:bg-gray-50 rounded-lg">Gallery</a>
+        <a href="articles.html" class="block py-2 px-3 text-sm text-[#143887] font-semibold bg-blue-50 rounded-lg">Articles</a>
+        <a href="contact.html" class="block py-2 px-3 text-sm bg-[#143887] text-white rounded-lg text-center">Contact</a>
       </div>
     </nav>
   </header>
 
-  <!-- Breadcrumb -->
-  <section class="bg-white border-b">
-    <div class="container mx-auto px-4 py-4 text-sm text-gray-600">
-      <a href="index.html" class="hover:text-[#143887]">Home</a> /
-      <span class="text-[#143887] font-medium">Articles</span>
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-br from-[#143887] via-[#1e56b8] to-[#2563eb] text-white py-20">
+    <div class="container mx-auto px-4 text-center">
+      <div class="inline-block bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-medium mb-4">
+        📰 News & Updates
+      </div>
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">Latest Articles</h1>
+      <p class="text-lg text-white/90 max-w-2xl mx-auto">Stay informed about our health initiatives, community programs, and impact stories across Ogun State.</p>
     </div>
   </section>
 
-  <!-- Articles -->
-  <section class="py-20">
-    <div class="container mx-auto px-4 max-w-4xl space-y-16">
+  <!-- Articles Grid -->
+  <section class="py-16">
+    <div class="container mx-auto px-4">
+      <div class="max-w-6xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-8">
 
-      <!-- Article 1 -->
-      <article class="bg-white rounded-2xl shadow-lg p-8">
-  <!-- Article Image -->
-  <div class="mb-8">
-    <img
-      src="images/pictures/sango/seven.jpg"
-      alt="Article image"
-      class="w-full h-72 object-cover rounded-2xl"
-    />
-  </div>
+        <!-- Article Card 1 -->
+        <article class="article-card bg-white rounded-2xl shadow-lg overflow-hidden cursor-pointer" onclick="window.location.href='cancer.html'">
+          <div class="h-56 overflow-hidden">
+            <img src="images/pictures/sango/seven.jpg" alt="Cervical Cancer Screening" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500" />
+          </div>
+          <div class="p-6">
+            <div class="flex items-center gap-2 text-xs text-gray-500 mb-3">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+              </svg>
+              <span>January 28, 2026</span>
+            </div>
+            <h3 class="text-xl font-bold text-gray-800 mb-3 hover:text-[#143887] transition-colors">Women in Ado-Odo/Ota, Odeda LGAs Get Free Cervical Cancer Screening</h3>
+            <p class="text-sm text-gray-600 mb-4 line-clamp-3">As part of efforts to ensure early detection of issues that can possibly lead to cervical cancer, women in Ado-Odo/Ota and Odeda Local Government Areas benefited from free screening...</p>
+            <div class="flex items-center text-[#143887] font-semibold text-sm group">
+              Read Full Article
+              <svg class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+              </svg>
+            </div>
+          </div>
+        </article>
 
-  <h2 class="text-3xl font-bold text-[#143887] mb-6">
-    Women in Ado-Odo/Ota, Odeda LGAs Get Free Cervical Cancer Screening
-  </h2>
+        <!-- Article Card 2 -->
+        <article class="article-card bg-white rounded-2xl shadow-lg overflow-hidden cursor-pointer" onclick="window.location.href='hpvvaccination.html'">
+          <div class="h-56 overflow-hidden">
+            <img src="images/pictures/odeda/one.jpg" alt="HPV Training" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500" />
+          </div>
+          <div class="p-6">
+            <div class="flex items-center gap-2 text-xs text-gray-500 mb-3">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+              </svg>
+              <span>January 23, 2026</span>
+            </div>
+            <h3 class="text-xl font-bold text-gray-800 mb-3 hover:text-[#143887] transition-colors">Ogun School Health Teachers Trained to Boost HPV Vaccination Coverage</h3>
+            <p class="text-sm text-gray-600 mb-4 line-clamp-3">Family Health Initiative (FAHIO), in collaboration with the Primary Health Care Board, has commenced training of health teachers and counsellors across primary schools...</p>
+            <div class="flex items-center text-[#143887] font-semibold text-sm group">
+              Read Full Article
+              <svg class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+              </svg>
+            </div>
+          </div>
+        </article>
 
-  <div class="text-gray-700 leading-relaxed space-y-4">
-    <p>As part of efforts to ensure early detection of issues that can possibly lead to cervical cancer, women in Ado-Odo/Ota and Odeda Local Government Areas of Ogun State benefited from a free cervical cancer screening.</p>
+        <!-- Article Card 3 -->
+        <article class="article-card bg-white rounded-2xl shadow-lg overflow-hidden cursor-pointer" onclick="window.location.href='pwd.html'">
+          <div class="h-56 overflow-hidden">
+            <img src="images/pictures/pwd/newest.jpg" alt="PWD Sensitization" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500" />
+          </div>
+          <div class="p-6">
+            <div class="flex items-center gap-2 text-xs text-gray-500 mb-3">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+              </svg>
+              <span>February 25, 2026</span>
+            </div>
+            <h3 class="text-xl font-bold text-gray-800 mb-3 hover:text-[#143887] transition-colors">FAHIO Sensitizes PWD on HPV Vaccination, Preaches Safety, Effectiveness</h3>
+            <p class="text-sm text-gray-600 mb-4 line-clamp-3">Family Health Initiative Ogun (FAHIO) has urged People With Disability (PWD) to safeguard the future of their teenage girls and women of child bearing age...</p>
+            <div class="flex items-center text-[#143887] font-semibold text-sm group">
+              Read Full Article
+              <svg class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+              </svg>
+            </div>
+          </div>
+        </article>
 
-    <p>The screening outreaches, held to commemorate Cancer Awareness Month, was jointly organized by the Family Health Initiative (FAHIO), in collaboration with the Ogun State Primary Health Care Board alongside the Medical Women's Association of Nigeria, Ogun State Chapter, with support from Pathfinder International.</p>
+        <!-- Article Card 4 -->
+        <article class="article-card bg-white rounded-2xl shadow-lg overflow-hidden cursor-pointer" onclick="window.location.href='hbvmeeting.html'">
+          <div class="h-56 overflow-hidden">
+            <img src="images/pictures/meetinghbvtwenty/meeting hbv 27th.jpeg" alt="PWD Sensitization" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500" />
+          </div>
+          <div class="p-6">
+            <div class="flex items-center gap-2 text-xs text-gray-500 mb-3">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+              </svg>
+              <span>February 27, 2026</span>
+            </div>
+            <h3 class="text-xl font-bold text-gray-800 mb-3 hover:text-[#143887] transition-colors">FAHIO Sensitizes Ilogbo ACDC on HPV Vaccination</h3>
+            <p class="text-sm text-gray-600 mb-4 line-clamp-3">Family Health Initiative Ogun (FAHIO) has urged People With Disability (PWD) to safeguard the future of their teenage girls and women of child bearing age...</p>
+            <div class="flex items-center text-[#143887] font-semibold text-sm group">
+              Read Full Article
+              <svg class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+              </svg>
+            </div>
+          </div>
+        </article>
 
-    <p>Speaking at the outreach, Chairperson of FAHIO, Mrs. Oluwakemi Balogun, represented by the Human Paplilomavirus (HPV) Community Champions, Alhaji (Chief) Waheed Adeyinka and Mrs. Saheed Adesola, emphasized the need for continuous awareness on prevention and early detection of cervical cancer among women.</p>
+      </div>
+    </div>
+  </section>
 
-    <p>Mrs. Balogun noted that the HPV vaccine is freely available in government health facilities to protect girls children of age 9 years before they become sexually active, while women of child-bearing age should undergo regular screening.</p>
-
-    <p>'I urge other women who are not opportune to partake in this outreach to visit government health facilities in their areas for the screening in order to know their  health status', she stated.</p>
-
-    <p>Contributing, President of the Medical Women's Association of Nigeria, Ogun State Chapter, Dr. Deborah Osisanwo, stated that cervical and breast cancers are common among women, and regular check-ups are essential for them to stay safe and healthy.</p>
-
-    <p>'This association realized the enormous tasks that women are undertaking in society. Their health and well-being are important to us, that is why we are championing this course', she said.</p>
-
-    <p>On his part, the State Coordinator of Pathfinder International, Mr. Emah Udeme, reaffirmed the organisation's commitment to cervical cancer awareness and screening, noting that its elimination by 2030 in the country remains sacrosanct.</p>
-
-    <p>Beneficiaries, including Mrs. Balikis Taiwo, and Mrs. Temitope Gbadamosi expressed gratitude to the organizers for the free screening.describing it as a necessity for women to undergo.</p>
-
-    <p>The event featured health talks on HPV vaccination, cervical cancer, breast examination, and family planning/child spacing, among others.</p>
-  </div>
-</article>
-
-
-      <!-- Article 2 -->
-      <article class="bg-white rounded-2xl shadow-lg p-8">
-  <!-- Article Image -->
-  <div class="mb-8">
-    <img
-      src="images/pictures/odeda/one.jpg"
-      alt="Article image"
-      class="w-full h-72 object-cover rounded-2xl"
-    />
-  </div>
-
-  <h2 class="text-3xl font-bold text-[#143887] mb-6">
-    Ogun School Health Teachers Trained to Boost HPV Vaccination Coverage
-  </h2>
-
-  <div class="text-gray-700 leading-relaxed space-y-4">
-    <p>Family Health Initiative (FAHIO), in collaboration with the Primary Health Care Board with the support of Pathfinder International, has commenced training of health teachers and counsellors across primary schools in Ogun state, to enhance their knowledge on the importance of Human Papillomavirus (HPV) vaccination.</p>
-
-    <p>The training, which drew participants from  Odeda, Yewa North, and Ijebu North Local Government Areas (LGAs), aimed to equip Health Teachers and Counsellors with skills to educate pupils and Parents Teachers Association (PTA) about HPV prevention and  benefits of its vaccination.</p>
-
-    <p>Speaking at the training,  Chairperson of FAHIO, Mrs. Oluwakemi Balogun, emphasized the crucial role health teachers play in promoting HPV vaccination, saying their involvement would help the State meet national and the state target of vaccinated girls by 2030.</p>
-
-    <p>'This organisation is passionate about protecting the future of our children, particularly the teenage girls, hence, we are promoting the uptake of vaccine preventable diseases such as cervical cancer. The organizers are 
- glad with the turnout of the participants, and shall intensify effort to ensure that  the training is extended to other health teachers in the remaining 17 LGAs.</p>
-
-    <p>"We urge all and sundry to work towards ensuring that parents and caregivers accept the vaccination for the the overall well-being of their teenage girls'', Balogun stated.</p>
-
-    <p>In his goodwill message, the Executive Secretary of the State  Primary Health Care Development Board, Dr. Elijah Ogunsola, commended  the health teachers for their dedication to sound health practices, enjoining them to collaborate with health workers in their areas  to drive government health initiatives.</p>
-
-    <p>Also speaking, the representative of World Health Organization in the State, Dr. Talaat Aladesawa and the State Coordinator of National Primary Healthcare Development Agency, Dr. Folarin Solape sought  the support of the teachers to always encourage  parents to utilize government health centres for  routine  immunization, saying HPV vaccination is free, effective and safe</p>
-
-    <p>In his remark, the State Coordinator of  Pathfinder International, Mr. Emah Udeme, thanked participants for their commitment to champion the course of  HPV vaccination awareness, stressing the need for accurate information dissemination.</p>
-
-    <p>Earlier in his presentation, the State Health Educator, Mr. Waheed Elegbede took participants through major vaccines preventable diseases that affect children, noting  that  the virus that causes cervical cancer could  be prevented by HPV  vaccination.</p>
-
-    <p>Speaking on behalf of other participants, Mr. Mufutau Ajani and Mrs. Bolanle  Bankole said the training has  broadened their understanding of HPV vaccination and its benefits.</p>
-  </div>
-</article>
-
+  <!-- CTA Section -->
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto bg-gradient-to-br from-[#143887] to-[#2563eb] rounded-2xl p-12 text-center text-white">
+        <h2 class="text-3xl font-bold mb-4">Stay Updated</h2>
+        <p class="text-lg text-white/90 mb-8">Follow us on social media for the latest news and updates on our health initiatives.</p>
+        <div class="flex flex-wrap justify-center gap-4">
+          <a href="https://web.facebook.com/profile.php?id=61551408306521" class="bg-white text-[#143887] px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">Follow on Facebook</a>
+          <a href="https://x.com/calx_66" class="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-[#143887] transition-colors">Follow on Twitter</a>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer class="bg-gray-900 text-white py-16">
-    <div class="container mx-auto px-4 text-center text-gray-400">
-      <p>&copy; 2026 FAHIO. All rights reserved.</p>
+  <footer class="bg-gray-800 text-white py-12">
+    <div class="container mx-auto px-4">
+      <div class="grid md:grid-cols-3 gap-8">
+        <div>
+          <h3 class="text-lg font-bold mb-4">FAHIO</h3>
+          <p class="text-gray-400 text-sm">Family Health Initiative Ogun - Empowering Ogun families and citizens through quality healthcare.</p>
+        </div>
+        <div>
+          <h4 class="text-base font-semibold mb-4">Quick Links</h4>
+          <ul class="space-y-2">
+            <li><a href="about.html" class="text-gray-400 text-sm hover:text-white">About Us</a></li>
+            <li><a href="mission.html" class="text-gray-400 text-sm hover:text-white">Mission</a></li>
+            <li><a href="gallery.html" class="text-gray-400 text-sm hover:text-white">Gallery</a></li>
+            <li><a href="contact.html" class="text-gray-400 text-sm hover:text-white">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-base font-semibold mb-4">Contact Info</h4>
+          <p class="text-gray-400 text-sm">Email: info@fahio.org</p>
+          <p class="text-gray-400 text-sm">Phone: +234 803 352 8629</p>
+        </div>
+      </div>
+      <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+        <p class="text-sm">&copy; 2026 FAHIO. All rights reserved.</p>
+      </div>
     </div>
   </footer>
 
   <script>
     const mobileMenuBtn = document.getElementById("mobile-menu-btn");
     const mobileMenu = document.getElementById("mobile-menu");
-
     mobileMenuBtn.addEventListener("click", () => {
-      mobileMenu.classList.toggle("active");
+      mobileMenu.classList.toggle("hidden");
     });
   </script>
 
