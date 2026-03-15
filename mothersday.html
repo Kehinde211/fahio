@@ -1,0 +1,425 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      5 Essential Health Checks Every Mother Needs | FAHIO
+    </title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html, body {
+        overflow-x: hidden;
+        width: 100%;
+        max-width: 100vw;
+      }
+
+      body {
+        font-family: "DM Sans", sans-serif;
+      }
+
+      h1, h2, h3 {
+        font-family: "Fraunces", serif;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 100%;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      /* Mobile fixes */
+      @media (max-width: 767px) {
+        h1 {
+          font-size: 1.875rem;
+          line-height: 1.2;
+        }
+
+        .prose {
+          font-size: 1rem;
+        }
+
+        .share-buttons {
+          flex-direction: column;
+        }
+
+        .share-buttons a {
+          width: 100%;
+          justify-content: center;
+        }
+      }
+
+      @media (min-width: 768px) {
+        .container {
+          max-width: 768px;
+        }
+      }
+
+      @media (min-width: 1024px) {
+        .container {
+          max-width: 1024px;
+        }
+      }
+
+      @media (min-width: 1280px) {
+        .container {
+          max-width: 1280px;
+        }
+      }
+
+      .mobile-menu {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+      }
+
+      .mobile-menu.active {
+        max-height: 400px;
+      }
+    </style>
+  </head>
+
+  <body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white/95 backdrop-blur-md shadow-sm sticky top-0 z-50">
+      <nav class="container mx-auto px-4 py-5">
+        <div class="flex justify-between items-center">
+          <div class="flex items-center gap-3">
+            <h1 class="text-2xl md:text-3xl font-bold text-[#143887]">FAHIO</h1>
+          </div>
+
+          <div class="hidden md:flex items-center space-x-8">
+            <a href="index.html" class="text-sm text-gray-600 hover:text-[#143887] transition-colors">Home</a>
+            <a href="about.html" class="text-sm text-gray-600 hover:text-[#143887] transition-colors">About</a>
+            <a href="mission.html" class="text-sm text-gray-600 hover:text-[#143887] transition-colors">Mission</a>
+            <a href="gallery.html" class="text-sm text-gray-600 hover:text-[#143887] transition-colors">Gallery</a>
+            <a href="articles.html" class="text-sm text-[#143887] font-semibold">News</a>
+            <a href="contact.html" class="bg-[#143887] text-white px-6 py-2.5 rounded-full font-medium hover:bg-[#0f2a5e] transition-all">
+              Contact
+            </a>
+          </div>
+
+          <button id="mobile-menu-btn" class="md:hidden text-gray-600">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="mobile-menu md:hidden">
+          <div class="pt-4 pb-4 space-y-2">
+            <a href="index.html" class="block py-2 px-3 text-sm text-gray-600 hover:bg-gray-50 rounded-lg">Home</a>
+            <a href="about.html" class="block py-2 px-3 text-sm text-gray-600 hover:bg-gray-50 rounded-lg">About</a>
+            <a href="mission.html" class="block py-2 px-3 text-sm text-gray-600 hover:bg-gray-50 rounded-lg">Mission</a>
+            <a href="gallery.html" class="block py-2 px-3 text-sm text-gray-600 hover:bg-gray-50 rounded-lg">Gallery</a>
+            <a href="articles.html" class="block py-2 px-3 text-sm text-[#143887] font-semibold bg-blue-50 rounded-lg">News</a>
+            <a href="contact.html" class="block py-2 px-3 text-sm bg-[#143887] text-white rounded-lg text-center">Contact</a>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Breadcrumb -->
+    <section class="bg-white border-b">
+      <div class="container mx-auto px-4 py-4 text-xs md:text-sm text-gray-600 overflow-x-auto">
+        <div class="whitespace-nowrap">
+          <a href="index.html" class="hover:text-[#143887]">Home</a> /
+          <a href="articles.html" class="hover:text-[#143887]">News</a> /
+          <span class="text-[#143887] font-medium">5 Essential Health Checks</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Article Content -->
+    <article class="py-8 md:py-16">
+      <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto">
+          <!-- Article Header -->
+          <div class="mb-6 md:mb-8">
+            <div class="flex flex-wrap items-center gap-2 md:gap-3 text-xs md:text-sm text-gray-500 mb-4">
+              <div class="flex items-center gap-2">
+                <svg class="w-4 h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                </svg>
+                <span>February 25, 2026</span>
+              </div>
+              <span>•</span>
+              <span>7 min read</span>
+            </div>
+            <h1 class="text-2xl md:text-4xl lg:text-5xl font-bold text-[#143887] mb-4 md:mb-6 leading-tight">
+              5 ESSENTIAL HEALTH CHECKS EVERY MOTHER NEEDS
+            </h1>
+          </div>
+
+          <!-- Featured Image -->
+          <div class="mb-8 md:mb-12 rounded-xl md:rounded-2xl overflow-hidden shadow-xl md:shadow-2xl">
+            <img src="images/pictures/pwd/newest.jpg" alt="Mother's Health Checkup" class="w-full h-48 md:h-96 object-cover" onerror="this.onerror=null; this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22800%22 height=%22400%22%3E%3Crect fill=%22%23f3f4f6%22 width=%22800%22 height=%22400%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-family=%22monospace%22 font-size=%2224px%22 fill=%22%236b7280%22%3EImage not available%3C/text%3E%3C/svg%3E';" />
+          </div>
+
+          <!-- Article Body -->
+          <div class="prose prose-sm md:prose-lg max-w-none">
+            <div class="text-gray-700 leading-relaxed space-y-4 md:space-y-6 text-sm md:text-base lg:text-lg">
+              <p class="text-base md:text-xl font-medium text-gray-800 mb-6 md:mb-8">
+                Mothers are a special one in our lives. They wake up before the
+                rest of the house does. They clean the house and make food for
+                everyone. Still, they find a way to show up for work in the
+                morning, despite the stress they've undergone. They are the ones
+                who know everyone's peculiar behaviors, everyone's favourite
+                meal, and exactly how each person in the family wants their food
+                to be dished. They give and continue to give quietly,
+                consistently, without waiting to be asked.
+              </p>
+
+              <p>
+                And yet, this begs the question: when was the last time they
+                were asked how they are doing?
+              </p>
+
+              <p>
+                Not the casual "how are you" that everyone just says light off
+                the lips. The kind that comes from a thoughtful place. One that
+                involves self-care, a proper check-up, and honest answers. For
+                many mothers, especially in Nigeria, self-care is a dream. It
+                feels selfish, or unnecessary, or simply something to get to
+                later. But later has a way of never coming into reality.
+              </p>
+
+              <p>
+                The numbers tell a revealing story. Ogun State faces significant
+                maternal health challenges, with a maternal mortality ratio of
+                179 deaths per 100,000 live births due to pregnancy-related
+                issues. Neonatal mortality stands at 56 per 1,000 live births,
+                the highest in Southwest Nigeria per the 2021 UNICEF Multiple
+                Indicator Cluster Survey, compared to Lagos (11), Osun (12), and
+                Ondo (18). These are not just statistics. They are mothers. And
+                they deserve better.
+              </p>
+
+              <p class="bg-blue-50 border-l-4 border-[#143887] p-4 md:p-6 my-6">
+                <strong>This Mother's Day, the most meaningful thing everyone can do,
+                from a place of care and love for every mother, is show up for
+                their health. Here are five checks that deserve to be
+                prioritised:</strong>
+              </p>
+
+              <p>
+                <strong>1. Blood Pressure Check</strong><br />
+                It takes less than two minutes and it
+                could save their lives. High blood pressure rarely announces
+                itself. There is no pain, no obvious symptoms, which is exactly
+                what makes it so easy to miss and dismiss. The only way to find
+                out if you have high blood pressure is to have it checked
+                regularly. For any mother juggling stress, stunted sleep or even
+                insomnia, and a routine that never stops, this is one number she
+                simply cannot afford not to know.
+              </p>
+
+              <p>
+                <strong>2. Breast Cancer Screening</strong><br />
+                Breast cancer is one of the most
+                common cancers in women, and the earlier it is found, the better
+                it can be avoided or managed. All women should start getting
+                mammograms every one to two years beginning at age 40, though
+                those with a family history may need to start sooner. It is a
+                brief, uncomfortable few minutes that could make all the
+                difference. If you as a mother have been postponing, this is the
+                reminder to stop postponing.
+              </p>
+
+              <p>
+                <strong>3. Cervical Cancer Screening (Pap Smear + HPV Test)</strong><br />
+                Cervical cancer is largely preventable, but only when women actually show
+                up for their screenings. A Pap smear detects abnormal cells on
+                the cervix, while HPV testing checks for high-risk strains of
+                the human papillomavirus that can trigger those changes. The
+                guidance is straightforward: start at age 21, with a Pap smear
+                every three years through age 29, then combine it with an HPV
+                test every five years from ages 30 to 65. A few minutes on a
+                table, potentially years added to a life.
+              </p>
+
+              <p>
+                <strong>4. Cholesterol and Blood Sugar Check</strong><br />
+                Heart disease remains the
+                leading cause of death in women, yet many mothers have never
+                once had a cholesterol conversation with their doctor. A
+                straightforward blood test can flag cardiovascular risk long
+                before symptoms ever appear. Blood sugar matters too,
+                particularly for mothers who experienced gestational diabetes,
+                as the risk does not simply disappear after delivery. High blood
+                sugar and high cholesterol may not produce any symptoms in the
+                early stages, but a simple blood test can catch both conditions
+                before they become serious.
+              </p>
+
+              <p>
+                <strong>5. Bone Density Scan</strong><br />
+                This scan tends to be overlooked until a
+                fracture makes it impossible to ignore. Women begin losing bone
+                density as early as their 30s, and that loss accelerates sharply
+                after menopause when oestrogen levels fall. Osteoporosis is
+                quiet by nature, no aches, no warning, until something breaks.
+                Screening is recommended for women whose fracture risk matches
+                that of an average 65-year-old, factoring in things like family
+                history, smoking, or low body weight. Catching it early means
+                there is still time to reverse the damage before it worsens.
+              </p>
+
+              <p><strong>And to Every Mother Reading This:</strong></p>
+
+              <p>
+                You remember every single thing, not just yours, but those that
+                concerns the others. You serve your family well, ensure the kids
+                are taken care of, and sit in waiting rooms for the people you
+                love. <strong>Now it is your turn.</strong>
+              </p>
+
+              <p>
+                <strong>Book the appointment. Take the tests. Let someone look after you
+                for once</strong>, because the people in your life need you here, healthy
+                and whole, for as long as possible.
+              </p>
+
+              <p>
+                <strong>To Every Father Reading This</strong><br />
+                You know her better than everyone.
+                You married her. You have watched her push through exhaustion,
+                put herself last, and still smile through all the stress. This
+                is your moment to return the favour and make her feel seen.
+              </p>
+
+              <p>
+                <strong>Book the appointment for her</strong> if she won't or forgets to do it
+                herself. <strong>Take her to the hospital. Sit in the waiting room. Ask
+                the doctor the questions</strong> she might be too busy or too proud to
+                ask. <strong>Be the reason she shows up for herself.</strong>
+              </p>
+
+              <p>
+                A mother who is healthy is a gift to everyone around her. And
+                you, more than anyone, have the power to make that happen.
+              </p>
+
+              <p class="italic text-lg mt-6">
+                This Mother's Day, love her the way she has always loved your
+                family—quietly, consistently, and without waiting to be asked.
+              </p>
+
+              <p class="font-bold text-lg text-[#143887] mt-4">Happy International Mother's Day.</p>
+            </div>
+
+            <!-- Share Section -->
+            <div class="mt-8 md:mt-12 pt-6 md:pt-8 border-t border-gray-200">
+              <h3 class="text-base md:text-lg font-bold text-gray-800 mb-4">Share this article</h3>
+              <div class="share-buttons flex flex-col sm:flex-row gap-3">
+                <a href="https://web.facebook.com/profile.php?id=61551408306521" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center gap-2 bg-blue-600 text-white px-4 md:px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors text-sm md:text-base">
+                  <svg class="w-4 h-4 md:w-5 md:h-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                  </svg>
+                  Facebook
+                </a>
+                <a href="https://x.com/calx_66" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center gap-2 bg-sky-500 text-white px-4 md:px-6 py-3 rounded-lg hover:bg-sky-600 transition-colors text-sm md:text-base">
+                  <svg class="w-4 h-4 md:w-5 md:h-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+                  </svg>
+                  Twitter
+                </a>
+                <a href="https://wa.me/2348033528629?text=Check%20out%20this%20article%20from%20FAHIO" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center gap-2 bg-green-600 text-white px-4 md:px-6 py-3 rounded-lg hover:bg-green-700 transition-colors text-sm md:text-base">
+                  <svg class="w-4 h-4 md:w-5 md:h-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                  </svg>
+                  WhatsApp
+                </a>
+              </div>
+            </div>
+
+            <!-- Back to Articles -->
+            <div class="mt-8 md:mt-12">
+              <a href="articles.html" class="inline-flex items-center gap-2 text-[#143887] font-semibold hover:gap-3 transition-all text-sm md:text-base">
+                <svg class="w-4 h-4 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                </svg>
+                Back to News
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </article>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12 md:py-16">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div>
+            <h3 class="text-lg md:text-xl font-bold mb-4">FAHIO</h3>
+            <p class="text-gray-400 text-sm">
+              Family Health Initiative Ogun - Empowering Ogun families and
+              citizens through quality healthcare.
+            </p>
+          </div>
+          <div>
+            <h4 class="text-base md:text-lg font-semibold mb-4">Quick Links</h4>
+            <ul class="space-y-2">
+              <li>
+                <a href="about.html" class="text-gray-400 text-sm hover:text-white transition-colors">About Us</a>
+              </li>
+              <li>
+                <a href="mission.html" class="text-gray-400 text-sm hover:text-white transition-colors">Mission</a>
+              </li>
+              <li>
+                <a href="gallery.html" class="text-gray-400 text-sm hover:text-white transition-colors">Gallery</a>
+              </li>
+              <li>
+                <a href="contact.html" class="text-gray-400 text-sm hover:text-white transition-colors">Contact</a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="text-base md:text-lg font-semibold mb-4">Contact Info</h4>
+            <p class="text-gray-400 text-sm mb-2">Email: info@fahio.org</p>
+            <p class="text-gray-400 text-sm">Phone: +234 803 352 8629</p>
+          </div>
+        </div>
+        <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+          <p class="text-xs md:text-sm">&copy; 2026 FAHIO. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      const mobileMenuBtn = document.getElementById("mobile-menu-btn");
+      const mobileMenu = document.getElementById("mobile-menu");
+      
+      mobileMenuBtn.addEventListener("click", () => {
+        mobileMenu.classList.toggle("active");
+      });
+    </script>
+  </body>
+</html>
