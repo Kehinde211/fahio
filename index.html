@@ -393,6 +393,10 @@
               Mission
               <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-[#143887] group-hover:w-full transition-all duration-300"></span>
             </a>
+            <a href="articles.html" class="text-gray-600 hover:text-[#143887] transition-colors relative group">
+              News
+              <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-[#143887] group-hover:w-full transition-all duration-300"></span>
+            </a>
             <a href="gallery.html" class="text-gray-600 hover:text-[#143887] transition-colors relative group">
               Gallery
               <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-[#143887] group-hover:w-full transition-all duration-300"></span>
@@ -861,41 +865,49 @@
       </div>
     </footer>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-      // Mobile menu toggle
-      const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-      const mobileMenu = document.getElementById('mobile-menu');
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+<script>
+  // Mobile menu toggle
+  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
 
-      mobileMenuBtn.addEventListener('click', () => {
-        mobileMenu.classList.toggle('active');
-      });
+  mobileMenuBtn.addEventListener('click', () => {
+    mobileMenu.classList.toggle('active');
+  });
 
-      // Counter animation
-      const counters = document.querySelectorAll('.counter');
-      const observerOptions = {
-        threshold: 0.5,
-        rootMargin: '0px'
-      };
+  // Counter animation
+  const counters = document.querySelectorAll('.counter');
 
-      const counterObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            const counter = entry.target;
-            const target = parseInt(counter.getAttribute('data-target'));
-            const duration = 2000;
-            const step = target / (duration / 16);
-            let current = 0;
+  const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const counter = entry.target;
+        const target = parseInt(counter.getAttribute('data-target'));
+        const duration = 2000;
+        const step = target / (duration / 16);
+        let current = 0;
 
-            counter.classList.add('visible');
+        counter.classList.add('visible');
 
-            const updateCounter = () => {
-              current += step;
-              if (current < target) {
-                counter.textContent = Math.floor(current);
-                requestAnimationFrame(updateCounter);
-              } else {
-                counter.textContent = target;
-              }
-            };
+        const updateCounter = () => {
+          current += step;
+          if (current < target) {
+            counter.textContent = Math.floor(current);
+            requestAnimationFrame(updateCounter);
+          } else {
+            counter.textContent = target;
+          }
+        };
 
-            updateCount
+        updateCounter();
+        counterObserver.unobserve(counter);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  counters.forEach(counter => {
+    counterObserver.observe(counter);
+  });
+</script>
+</body>
+</html>
